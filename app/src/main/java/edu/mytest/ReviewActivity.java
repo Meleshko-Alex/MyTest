@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import edu.mytest.models.OneReviewModel;
 import edu.mytest.models.ReviewAnswerModel;
@@ -50,11 +51,14 @@ public class ReviewActivity extends Activity {
 
             @Override
             public void onClick(View v) {
+                Toast.makeText(getBaseContext(), ""+LoginActivity.token, Toast.LENGTH_LONG).show();
                 OneReviewModel review = new OneReviewModel();
-                review.setRate(Integer.parseInt(tv_rate.getText().toString()));
-                review.setText(et_review.getText().toString());
+                review.setRate(5);//(Integer.parseInt(tv_rate.getText().toString()));
+                review.setText("GOOD!");//(et_review.getText().toString());
 
-                Call<ReviewAnswerModel> call = LoginActivity.service.setReview(review);
+                Call<ReviewAnswerModel> call = LoginActivity.service.setReview(LoginActivity.token
+                                                ,review);
+
 
                 call.enqueue(new Callback<ReviewAnswerModel>() {
                     @Override
@@ -76,6 +80,8 @@ public class ReviewActivity extends Activity {
                                             });
                             AlertDialog alert = builder.create();
                             alert.show();
+                        } else {
+                            Toast.makeText(getBaseContext(), "ALL RIGHT!!!!!!!!", Toast.LENGTH_LONG).show();
                         }
                     }
 

@@ -13,6 +13,8 @@ import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -26,8 +28,17 @@ public interface APIService {
     @POST("/api/login/")
     Call<RegisterModel> checkUser(@FieldMap Map<String, String> map);
 
+    @Headers({
+            "Accept: application/json",
+            "Content-Type: application/json"
+    })
     @POST("/api/reviews/1")
-    Call<ReviewAnswerModel> setReview(@Body OneReviewModel review);
+    Call<ReviewAnswerModel> setReview(@Header("Authorization: Token ") String token, @Body OneReviewModel review);
+
+    /*@POST("/api/reviews/1")
+    Call<ReviewAnswerModel> setReview(@Header("Authorization") String authorization,
+                                      @Header("Accept") ReviewAnswerModel accept,
+                                      @Header("Contetnt-Type")OneReviewModel review);*/
 
     @GET("/api/products/")
     Call<List<ProductModel>> getProducts();

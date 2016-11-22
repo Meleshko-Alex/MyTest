@@ -36,6 +36,7 @@ public class LoginActivity extends Activity implements View.OnClickListener{
     private Retrofit retrofit;
     private final String URL = "http://smktesting.herokuapp.com";
     public static APIService service;
+    public static String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +97,7 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                         public void onResponse(Call<RegisterModel> call, Response<RegisterModel> response) {
                             if (response.code() == 200){
                                 RegisterModel rm = response.body();
+                                token = rm.getToken();
                                 if (rm.getSuccess()) {
                                     Intent intent = new Intent(getBaseContext(), MainActivity.class);
                                     intent.putExtra("name", et_name.getText().toString());
@@ -146,6 +148,7 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                 @Override
                 public void onResponse(Call<RegisterModel> call, Response<RegisterModel> response) {
                         RegisterModel rm = response.body();
+                        token = rm.getToken();
                         if (rm.getSuccess()) {
                             Intent intent = new Intent(getBaseContext(), MainActivity.class);
                             intent.putExtra("name", et_name.getText().toString());
