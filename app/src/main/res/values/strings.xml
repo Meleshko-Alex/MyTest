@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MyTest</string>
+    <string name="text_for_enter">Для входа введите имя и пароль</string>
+    <string name="text_for_reg">Для регистрации введите имя и пароль</string>
+    <string name="guest_enter">Войти как гость</string>
+    <string name="btn_enter">Войти</string>
+    <string name="reg">Регистрация</string>
+    <string name="ok_btn">OK</string>
+    <string name="name">Имя</string>
+    <string name="password">Пароль</string>
+    <string name="text_error">Поле ввода не должно быть пустым</string>
+    <string name="enter_error">Неврное имя или пароль</string>
+    <string name="exists">Пользователь с таким именем уже существует</string>
+    <string name="hello">Здравтсвуйте,</string>
+    <string name="guest">Гость</string>
+    <string name="catalog">Каталог товаров</string>
+    <string name="reviews">Отзывы</string>
+    <string name="rate">Оценка:</string>
+    <string name="btn_reviews">Оставить отзыв</string>
+    <string name="your_reviews">Оставьте отзыв</string>
+    <string name="your_rate">Ваша оценка</string>
+    <string name="send">Отправить</string>
+</resources>
