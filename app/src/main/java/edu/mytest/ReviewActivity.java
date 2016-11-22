@@ -66,7 +66,7 @@ public class ReviewActivity extends Activity {
                         ReviewAnswerModel answer = response.body();
                         if (response.code() != 200) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(ReviewActivity.this);
-                            builder.setMessage(response.message().toString() + "\n" + response.code()
+                            builder.setMessage(response.headers().toString() + "\n" + response.code()
                                     + "\n" + "Попытайтесь позже")
                                     .setTitle("Ошибка сервера")
                                     .setCancelable(false)

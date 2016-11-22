@@ -82,6 +82,7 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
+        createListView();
     }
 
     @Override
@@ -90,7 +91,7 @@ public class MainActivity extends Activity {
         String name = getIntent().getStringExtra("name");
         isGuest = getIntent().getBooleanExtra("isGuest", true);
         tv_hello.setText(tv_hello.getText() + name);
-        createListView();
+
     }
 
     private void createListView() {

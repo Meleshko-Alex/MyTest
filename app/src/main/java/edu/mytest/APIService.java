@@ -35,10 +35,6 @@ public interface APIService {
     @POST("/api/reviews/1")
     Call<ReviewAnswerModel> setReview(@Header("Authorization: Token ") String token, @Body OneReviewModel review);
 
-    /*@POST("/api/reviews/1")
-    Call<ReviewAnswerModel> setReview(@Header("Authorization") String authorization,
-                                      @Header("Accept") ReviewAnswerModel accept,
-                                      @Header("Contetnt-Type")OneReviewModel review);*/
 
     @GET("/api/products/")
     Call<List<ProductModel>> getProducts();
