@@ -42,6 +42,8 @@ public class MainActivity extends Activity {
     private ImageView iv_foto;
     private TextView tv_prod_name, tv_description, tv_reviews, tv_specification;
     private Button btn_reviews;
+    public static int productId;
+    private ReviewAdapter adapter;
 
 
 
@@ -142,6 +144,7 @@ public class MainActivity extends Activity {
             if (product.getTitle().equals(product_name)) {
                 tv_prod_name.setText(product.getTitle());
                 tv_specification.setText(product.getText());
+                productId = product.getId();
                 setImage(product.getId());
 
                 Call<List<ReviewModel>> call = service.getReviews(product.getId());
@@ -149,13 +152,17 @@ public class MainActivity extends Activity {
                     @Override
                     public void onResponse(Call<List<ReviewModel>> call, Response<List<ReviewModel>> response) {
                         if (response.code() == 200){
+                            clearListView(data);
                             reviewsList.addAll(response.body());
                             for (ReviewModel review : reviewsList){
 
                                 data.add(new ItemReview(review.getText(), getText(R.string.rate) + " " + review.getRate()));
                             }
-                            ReviewAdapter adapter = new ReviewAdapter(getBaseContext(), data);
+
+                            adapter = new ReviewAdapter(getBaseContext(), data);
+
                             lv_reviews.setAdapter(adapter);
+
                         }
                     }
 
@@ -165,6 +172,13 @@ public class MainActivity extends Activity {
                     }
                 });
             }
+        }
+    }
+
+    private void clearListView(ArrayList<ItemReview> data) {
+        if (adapter != null && data != null) {
+            data.clear();
+            adapter.notifyDataSetChanged();
         }
     }
 

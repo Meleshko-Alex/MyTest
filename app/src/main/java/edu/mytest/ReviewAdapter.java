@@ -57,4 +57,5 @@ public class ReviewAdapter extends BaseAdapter {
         subHeader.setText(data.get(i).getRate());
         return someView;
     }
+
 }
