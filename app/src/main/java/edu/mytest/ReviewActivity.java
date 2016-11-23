@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,7 +50,6 @@ public class ReviewActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(getBaseContext(), ""+LoginActivity.token, Toast.LENGTH_LONG).show();
                 OneReviewModel review = new OneReviewModel();
                 review.setRate(Integer.parseInt(tv_rate.getText().toString()));
                 review.setText(et_review.getText().toString());
@@ -74,14 +72,14 @@ public class ReviewActivity extends Activity {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
                                                     dialog.cancel();
-                                                    Log.d("AAAAAAAAAAAAA", LoginActivity.token);
                                                     finish();
                                                 }
                                             });
                             AlertDialog alert = builder.create();
                             alert.show();
                         } else {
-                            Toast.makeText(getBaseContext(), "ALL RIGHT!!!!!!!!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getBaseContext(), getString(R.string.thx), Toast.LENGTH_LONG).show();
+                            finish();
                         }
                     }
 

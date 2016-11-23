@@ -152,17 +152,16 @@ public class MainActivity extends Activity {
                     @Override
                     public void onResponse(Call<List<ReviewModel>> call, Response<List<ReviewModel>> response) {
                         if (response.code() == 200){
-                            clearListView(data);
                             reviewsList.addAll(response.body());
                             for (ReviewModel review : reviewsList){
 
                                 data.add(new ItemReview(review.getText(), getText(R.string.rate) + " " + review.getRate()));
                             }
-
                             adapter = new ReviewAdapter(getBaseContext(), data);
 
                             lv_reviews.setAdapter(adapter);
 
+                            reviewsList.clear();
                         }
                     }
 
@@ -172,13 +171,6 @@ public class MainActivity extends Activity {
                     }
                 });
             }
-        }
-    }
-
-    private void clearListView(ArrayList<ItemReview> data) {
-        if (adapter != null && data != null) {
-            data.clear();
-            adapter.notifyDataSetChanged();
         }
     }
 

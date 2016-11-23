@@ -31,7 +31,6 @@ public interface APIService {
     @Headers({
             "Accept: application/json",
             "Content-Type: application/json",
-            //"Authorization: Token ca9d093b39f5d56cac9ab9d67fa51ce9dae72114"
     })
     @POST("/api/reviews/{id}")
     Call<ReviewAnswerModel> setReview(@Path("id") int id, @Header("Authorization") String token, @Body OneReviewModel review);
